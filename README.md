@@ -1,5 +1,5 @@
 # Ex02 Django ORM Web Application
-## Date: 
+## Date:18:10:23 
 
 ## AIM
 To develop a Django application to store and retrieve data from a Football Players database using Object Relational Mapping(ORM).
@@ -24,11 +24,35 @@ Execute Django admin and create 10 Football players
 
 ## PROGRAM
 
-Include your code here
+```
+models.py
+from django.db import models
+from django.contrib import admin
+class Players(models.Model):
+    name=models.CharField(max_length=100)
+    age=models.IntegerField()
+    team_name=models.CharField(max_length=20)
+    salary=models.IntegerField()
+    weight=models.IntegerField()
+    no_of_winning=models.IntegerField()
+    email= models.EmailField()
+    
+class PlayersAdmin(admin.ModelAdmin):
+    list_display=('name','age','team_name','salary','weight','no_of_winning','email')
+
+
+
+# Create your models here.
+admin.py
+from django.contrib import admin
+from .models import Players,PlayersAdmin
+admin.site.register(Players,PlayersAdmin)
+
+# Register your models here.
+```
 
 ## OUTPUT
-
-Include the screenshot of your admin page.
+![Alt text](<Screenshot 2023-10-18 092805.png>)
 
 
 ## RESULT
